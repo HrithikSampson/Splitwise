@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+        updateCheck="false"
+        monitoring="autodetect"
+        dynamicConfig="true">
+
+    <diskStore path="java.io.tmpdir/ehcache"/>
+
+    <defaultCache
+            maxEntriesLocalHeap="500"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="1800"
+            memoryStoreEvictionPolicy="LRU"
+            statistics="true"
+    />
+
+    <cache
+            name="userRegion"
+            maxEntriesLocalHeap="1000"
+            maxEntriesLocalDisk="10000"
+            eternal="false"
+            timeToIdleSeconds="600"
+            timeToLiveSeconds="3600"
+            memoryStoreEvictionPolicy="LRU"
+            statistics="true">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+    <cache
+            name="groupRegion"
+            maxEntriesLocalHeap="500"
+            maxEntriesLocalDisk="5000"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="1800"
+            memoryStoreEvictionPolicy="LFU"
+            statistics="true">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+    <cache
+            name="userExpensesRegion"
+            maxEntriesLocalHeap="300"
+            maxEntriesLocalDisk="3000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="900"
+            memoryStoreEvictionPolicy="LRU"
+            statistics="true">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+    <cache
+            name="org.hibernate.cache.internal.StandardQueryCache"
+            maxEntriesLocalHeap="200"
+            maxEntriesLocalDisk="2000"
+            eternal="false"
+            timeToIdleSeconds="60"
+            timeToLiveSeconds="300"
+            memoryStoreEvictionPolicy="LRU"
+            statistics="true">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+    <cache
+            name="org.hibernate.cache.spi.UpdateTimestampsCache"
+            maxEntriesLocalHeap="200"
+            maxEntriesLocalDisk="2000"
+            eternal="true"
+            memoryStoreEvictionPolicy="LRU"
+            statistics="true">
+        <persistence strategy="localTempSwap"/>
+    </cache>
+
+</ehcache>
